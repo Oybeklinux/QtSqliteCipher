@@ -24,9 +24,6 @@ extern "C" {
  * OpenSSL was configured with the following options:
  */
 
-#ifndef OPENSSL_SYS_MACOSX
-# define OPENSSL_SYS_MACOSX 1
-#endif
 #ifndef OPENSSL_NO_MD2
 # define OPENSSL_NO_MD2
 #endif
@@ -50,6 +47,9 @@ extern "C" {
 #endif
 #ifndef OPENSSL_NO_DEVCRYPTOENG
 # define OPENSSL_NO_DEVCRYPTOENG
+#endif
+#ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
+# define OPENSSL_NO_EC_NISTP_64_GCC_128
 #endif
 #ifndef OPENSSL_NO_EGD
 # define OPENSSL_NO_EGD
@@ -188,7 +188,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
-#define RC4_INT unsigned int
+#define RC4_INT unsigned char
 
 #ifdef  __cplusplus
 }

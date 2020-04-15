@@ -22,6 +22,6 @@ HEADERS += \
 SOURCES += \
     $$PWD/sqlite3.c
 
-LIBS += -L$$PWD/lib -lsqlcipher -leay32 -lsqlite3
+LIBS += -L$$PWD/lib -lcrypto
 
 TR_EXCLUDE += $$PWD/*

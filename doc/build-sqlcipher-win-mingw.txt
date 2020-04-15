@@ -1,0 +1,23 @@
+# 1. Clone sqlcipher
+git clone --recurse-submodules https://github.com/sqlcipher/sqlcipher.git
+
+# 2. copy libcrypto.dll and 'openssl' headers folder to sqlcipher root dir;
+
+# 3. Configure:
+./configure --with-crypto-lib=none --disable-tcl --enable-tempstore=yes CFLAGS="-DSQLITE_HAS_CODEC -DSQLCIPHER_CRYPTO_OPENSSL -DSQLITE_ENABLE_FTS5 -L/g/OpenSource/sqlcipher/sqlcipher/ -static-libgcc" LDFLAGS="-L/g/OpenSource/sqlcipher/sqlcipher/ -lcrypto"
+
+# 4. make amalgamation
+make sqlite3.c
+
+# 5. copy sqlcipher amalgamation sources to SqliteCipherPlugin\sqlcipher directory:
+    sqlite3.c sqlite3.h sqlite3ext.h
+
+# 4. copy openssl files:
+  'openssl' headers to SqliteCipherPlugin directory;
+  libcrypto.dll to SqliteCipherPlugin\sqlcipher\lib\ directory.
+
+# 5. Build SqliteCipherPlugin.pro with QtCreator
+
+# 6. copy output qsqlcipher.dll to Qt5.14.2\5.14.2\mingw73_32\plugins\sqldrivers\
+
+# 7. enjoy!!!
